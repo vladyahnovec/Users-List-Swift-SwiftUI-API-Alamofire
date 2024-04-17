@@ -107,6 +107,7 @@ struct MainView: View {
                         ForEach(vm.users, id: \.self) {
                             user in
                             Button(action: {
+                                vm.findText = ""
                                 vm.sortCity = user.address.city
                             }) {
                                 Text(user.address.city)
@@ -121,6 +122,7 @@ struct MainView: View {
                         ForEach(vm.users, id: \.self) {
                             user in
                             Button(action: {
+                                vm.findText = ""
                                 vm.sortCompany = user.company.name
                               }) {
                                 Text(user.company.name)
