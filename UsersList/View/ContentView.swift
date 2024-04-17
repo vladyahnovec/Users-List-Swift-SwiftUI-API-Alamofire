@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Alamofire
 struct ContentView: View {
     @ObservedObject var vm = ViewModel()
     var body: some View {

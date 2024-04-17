@@ -10,7 +10,7 @@ import Alamofire
 
 struct MainView: View {
     @StateObject var vm : ViewModel
-    @State var name = ""
+    @State var checker = false
     var body: some View {
         VStack{
             VStack {
@@ -31,53 +31,108 @@ struct MainView: View {
                             .font(.system(size: 25))
                             .foregroundColor(.gray)
                             .padding(.leading, 10)
-                        TextField("Name...", text: $name)
+                        TextField("Name...", text: $vm.findText)
                             .padding(.trailing, 10)
                             .foregroundColor(.gray)
                     }
                 }
                 ScrollView {
-                    VStack(alignment: .leading) {
-                        ForEach(vm.users, id: \.self) {
-                            user in
-                            VStack {
-                                HStack {
-                                    ZStack {
-                                        Circle()
-                                            .fill(.gray)
-                                            .frame(width: 70)
-                                        Image(systemName: "person")
-                                            .font(.system(size: 40))
-                                            .foregroundColor(.white)
-                                    }
-                                    Spacer()
+                    if vm.foundUsers.count == 0 && vm.findText != "" {
+                        VStack {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.gray)
+                                    .frame(width: 100, height: 100)
+                                Image(systemName: "person.slash.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 50))
+                            }
+                            .padding(.top, 50)
+                            Text("Incorrect user name ;(")
+                                .padding(.top, 20)
+                                .font(.custom("Montserrat-Bold", size: 20))
+                        }
+                    }
+                    else {
+                        VStack(alignment: .leading) {
+                            ForEach(vm.foundUsers.count == 0 ? vm.users : vm.foundUsers, id: \.self) {
+                                user in
+                                VStack {
                                     HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(user.name)
-                                                .font(.custom("Montserrat-Bold", size: 20))
+                                        ZStack {
+                                            Circle()
+                                                .fill(.gray)
+                                                .frame(width: 70)
+                                            Image(systemName: "person")
+                                                .font(.system(size: 40))
+                                                .foregroundColor(.white)
+                                        }
+                                        Spacer()
+                                        HStack {
+                                            VStack(alignment: .leading) {
+                                                Text(user.name)
+                                                    .font(.custom("Montserrat-Bold", size: 20))
                                                 Text(user.username)
                                                     .font(.custom("Montserrat-Light", size: 17))
                                                     .padding(.top, 1)
-                                            Text(user.company.name)
-                                                .font(.custom("Montserrat-Light", size: 15))
-                                            Text(user.email)
-                                                .font(.custom("Montserrat-Regular", size: 12))
-                                                .padding(.top, 1)
+                                                Text(user.address.city)
+                                                    .font(.custom("Montserrat-Light", size: 15))
+                                                Text(user.company.name)
+                                                    .font(.custom("Montserrat-Light", size: 15))
+                                                Text(user.email)
+                                                    .font(.custom("Montserrat-Regular", size: 12))
+                                                    .padding(.top, 1)
+                                            }
+                                            .padding(.top, 10)
+                                            .padding(.leading, 10)
+                                            Spacer()
                                         }
-                                        .padding(.top, 10)
-                                        .padding(.leading, 10)
-                                        Spacer()
                                     }
+                                    Rectangle()
+                                        .fill(Color.gray)
+                                        .frame(width: 250, height: 2)
                                 }
-                                Rectangle()
-                                    .fill(Color.gray)
-                                    .frame(width: 250, height: 2)
+                                
                             }
-                            
                         }
                     }
                     Spacer()
                 }
+                HStack(spacing: 30) {
+                    Spacer()
+                    Button(action: {vm.sortAlphabet()}) {
+                        Image(systemName: "abc")
+                    }
+                    Menu {
+                        ForEach(vm.users, id: \.self) {
+                            user in
+                            Button(action: {
+                                vm.sortCity = user.address.city
+                            }) {
+                                Text(user.address.city)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "location.fill")
+                            .font(.system(size: 20))
+                    }
+                    
+                    Menu {
+                        ForEach(vm.users, id: \.self) {
+                            user in
+                            Button(action: {
+                                vm.sortCompany = user.company.name
+                              }) {
+                                Text(user.company.name)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "hammer.fill")
+                            .font(.system(size: 20))
+                    }
+                }
+                .foregroundColor(.black)
+                .padding(.top, 5)
             }
             .padding(30)
             .frame(width: 300, height: 500)

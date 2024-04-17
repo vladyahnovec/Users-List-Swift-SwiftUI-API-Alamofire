@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F410C2A42BCF0C1C00DCA534 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410C2A32BCF0C1C00DCA534 /* NetworkingManager.swift */; };
-		F410C2AB2BCF0CBE00DCA534 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F410C2AA2BCF0CBE00DCA534 /* Alamofire */; };
-		F410C2AD2BCF0CBE00DCA534 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = F410C2AC2BCF0CBE00DCA534 /* AlamofireDynamic */; };
 		F410C2AF2BCF0E2A00DCA534 /* CodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410C2AE2BCF0E2A00DCA534 /* CodableType.swift */; };
 		F410C2B12BCF105D00DCA534 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410C2B02BCF105D00DCA534 /* ViewModel.swift */; };
 		F410C2B42BCF16D800DCA534 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F410C2B32BCF16D800DCA534 /* Montserrat-Black.ttf */; };
@@ -17,6 +15,7 @@
 		F410C2BA2BCF16E800DCA534 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F410C2B62BCF16E800DCA534 /* Montserrat-Bold.ttf */; };
 		F410C2BB2BCF16E800DCA534 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F410C2B72BCF16E800DCA534 /* Montserrat-Medium.ttf */; };
 		F410C2BC2BCF16E800DCA534 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F410C2B82BCF16E800DCA534 /* Montserrat-Light.ttf */; };
+		F410C2C52BCF253200DCA534 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F410C2C42BCF253200DCA534 /* Alamofire */; };
 		F44725C52BCDE7B800DB603F /* UsersListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44725C42BCDE7B800DB603F /* UsersListApp.swift */; };
 		F44725C72BCDE7B800DB603F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44725C62BCDE7B800DB603F /* ContentView.swift */; };
 		F44725C92BCDE7B900DB603F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44725C82BCDE7B900DB603F /* Assets.xcassets */; };
@@ -49,8 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F410C2AB2BCF0CBE00DCA534 /* Alamofire in Frameworks */,
-				F410C2AD2BCF0CBE00DCA534 /* AlamofireDynamic in Frameworks */,
+				F410C2C52BCF253200DCA534 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,8 +174,7 @@
 			);
 			name = UsersList;
 			packageProductDependencies = (
-				F410C2AA2BCF0CBE00DCA534 /* Alamofire */,
-				F410C2AC2BCF0CBE00DCA534 /* AlamofireDynamic */,
+				F410C2C42BCF253200DCA534 /* Alamofire */,
 			);
 			productName = UsersList;
 			productReference = F44725C12BCDE7B800DB603F /* UsersList.app */;
@@ -208,7 +205,7 @@
 			);
 			mainGroup = F44725B82BCDE7B800DB603F;
 			packageReferences = (
-				F410C2A92BCF0CBE00DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F410C2C32BCF253200DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = F44725C22BCDE7B800DB603F /* Products */;
 			projectDirPath = "";
@@ -381,6 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UsersList/Preview Content\"";
+				DEVELOPMENT_TEAM = UR64DG2TG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UsersList/Info.plist;
@@ -410,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UsersList/Preview Content\"";
+				DEVELOPMENT_TEAM = UR64DG2TG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UsersList/Info.plist;
@@ -455,26 +454,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F410C2A92BCF0CBE00DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		F410C2C32BCF253200DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.1;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F410C2AA2BCF0CBE00DCA534 /* Alamofire */ = {
+		F410C2C42BCF253200DCA534 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F410C2A92BCF0CBE00DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = F410C2C32BCF253200DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		F410C2AC2BCF0CBE00DCA534 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F410C2A92BCF0CBE00DCA534 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
